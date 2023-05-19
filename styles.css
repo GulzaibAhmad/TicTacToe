@@ -277,7 +277,7 @@ body.dark-theme .cross:after {
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 959px) {
+@media screen and (min-width: 600px) {
   body {
     font-size: 18px;
   }
@@ -321,7 +321,7 @@ body.dark-theme .cross:after {
     padding: 10px 20px;
   }
 }
-
+/* 
 @media screen and (min-width: 960px) {
   body {
     font-size: 20px;
@@ -366,3 +366,4 @@ body.dark-theme .cross:after {
     padding: 12px 24px;
   }
 }
+ */
