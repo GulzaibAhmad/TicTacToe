@@ -35,7 +35,7 @@ body {
 }
 
 body.dark-theme {
-  background: #222;
+  background: #272726;
   color: #fff;
 }
 
@@ -48,7 +48,7 @@ p {
   font-size: 20px;
   color: black;
   animation: wave 2s linear infinite; /* Added wave animation */
-  backface-visibility: hidden; /* Prevent text blur */
+  backface-visibility: hidden; /*  Prevent text blur */
 }
 
 body.dark-theme p {
@@ -65,6 +65,8 @@ body.dark-theme p {
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   perspective: 800px;
+  animation: wave 2s linear infinite; /* Added wave animation */
+  backface-visibility: hidden; /* Prevent text blur */
 }
 
 .square {
@@ -131,7 +133,22 @@ body.dark-theme p {
   position: absolute;
   top: 20px;
   right: 20px;
+  animation: wave2 2s linear infinite;
+  backface-visibility: hidden;
 }
+
+@keyframes wave2 {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 
 .switch {
   position: relative;
