@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="heading">Tic Tac Toe</h1>
+    </header>
+
+    <div class="toggle-container">
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <div id="gameboard"></div>
+
+    <p id="info"></p>
+
+    <button class="restart-button" id="restart-button">Restart Game</button>
+
+    <script>
+        const gameBoard = document.querySelector("#gameboard");
+        const infoDisplay = document.querySelector("#info");
+        const startCells = ["", "", "", "", "", "", "", "", ""];
+        let go = "circle";
+        infoDisplay.textContent = "Circle goes first.";
+
+        function createBoard() {
+            startCells.forEach((_cell, index) => {
+                const cellElement = document.createElement("div");
+                cellElement.classList.add("square");
+                cellElement.id = index;
+                cellElement.addEventListener("click", addGo);
+                gameBoard.append(cellElement);
+            });
+        }
+
+        createBoard();
+
+        function addGo(e) {
+            const goDisplay = document.createElement("div");
+            goDisplay.classList.add(go);
+            e.target.append(goDisplay);
+            go = go === "circle" ? "cross" : "circle";
+            infoDisplay.textContent = "It is now " + go + "'s go.";
+            e.target.removeEventListener("click", addGo);
+            checkScore();
+            checkDraw();
+        }
+
+        function checkScore() {
+            const allSquares = document.querySelectorAll(".square");
+            const winningCombos = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6],
+            ];
+
+            winningCombos.forEach((array) => {
+                const circleWins = array.every((cell) =>
+                    allSquares[cell].firstChild?.classList.contains("circle")
+                );
+
+                if (circleWins) {
+                    infoDisplay.textContent = "Circle Won!";
+                    allSquares.forEach((square) => square.replaceWith(square.cloneNode(true)));
+                    return;
+                }
+            });
+
+            winningCombos.forEach((array) => {
+                const crossWins = array.every((cell) =>
+                    allSquares[cell].firstChild?.classList.contains("cross")
+                );
+
+                if (crossWins) {
+                    infoDisplay.textContent = "Cross Won!";
+                    allSquares.forEach((square) => square.replaceWith(square.cloneNode(true)));
+                    return;
+                }
+            });
+        }
+
+        function checkDraw() {
+            const allSquares = document.querySelectorAll(".square");
+            const isDraw = Array.from(allSquares).every((square) => square.firstChild);
+
+            if (isDraw) {
+                infoDisplay.textContent = "It's a draw!";
+            }
+        }
+
+        const themeToggle = document.querySelector("#theme-toggle");
+        themeToggle.addEventListener("change", toggleTheme);
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark-theme");
+        }
+
+        const restartButton = document.querySelector("#restart-button");
+        restartButton.addEventListener("click", restartGame);
+
+        function restartGame() {
+            gameBoard.innerHTML = "";
+            createBoard();
+            go = "circle";
+            infoDisplay.textContent = "Circle goes first.";
+        }
+    </script>
+</body>
+
+</html>
