@@ -294,7 +294,7 @@ body.dark-theme .cross:after {
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 1500px) {
+@media screen and (min-width: 600px) and (max-width: 1600px) {
   body {
     font-size: 18px;
   }
@@ -339,7 +339,7 @@ body.dark-theme .cross:after {
   }
 }
 
-@media screen and (min-width: 1501px) {
+@media screen and (min-width: 1601px) {
   body {
     font-size: 20px;
   }
