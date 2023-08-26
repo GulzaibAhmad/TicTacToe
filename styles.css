@@ -47,8 +47,8 @@ p {
   font-weight: bold;
   font-size: 20px;
   color: black;
-  animation: wave 2s linear infinite; /* Added wave animation */
-  backface-visibility: hidden; /*  Prevent text blur */
+  animation: wave 2s linear infinite;
+  backface-visibility: hidden; 
 }
 
 body.dark-theme p {
@@ -294,7 +294,7 @@ body.dark-theme .cross:after {
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 1600px) {
+@media screen and (min-width: 600px) and (max-width: 1700px) {
   body {
     font-size: 18px;
   }
@@ -339,7 +339,7 @@ body.dark-theme .cross:after {
   }
 }
 
-@media screen and (min-width: 1601px) {
+@media screen and (min-width: 1701px) {
   body {
     font-size: 20px;
   }
